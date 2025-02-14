@@ -1,0 +1,51 @@
+print("hello world"\n * 4)   #exercice 1
+
+print((99^3)*8) #exercice 2
+
+5 < 3                #false
+3 == 3               #true
+3 == "3"             #false
+"3" > 3              #false
+"Hello" == "hello"   #false
+       #exercice 3 
+
+computer_brand = "windows"
+print(f"i have a {computer_brand} computer)
+         #exercice 4
+
+name = "ariel"
+age = "18"
+shoe_size = "41"
+info = (f"hi ,i am {name} ,{age} years old , i use to wear {shoe_size} in my shoes. And yep i am a french guy,  simple isn't it...")
+print(info)
+     #exercice 5
+
+a=5
+b=1
+if a > b: 
+   print("hello world")
+       # exercice 6 
+
+number = int(input("give a number : "))
+if number % 2 == 0
+    print("the number is even")
+else:
+print("the number is odd")
+      #exercice 7 
+
+name = input("tell you name: ")
+holy_name = ariel
+
+if holy_name.lower == name.lower
+    print("i will find you") 
+else:
+    print("ok, noted")
+    #exercice 8 
+
+height = int(input("give your in height in centimers plz: "))
+if height >= 145
+   print("you can enter")
+else:
+  print("nuh uh , drink more milk")
+
+
