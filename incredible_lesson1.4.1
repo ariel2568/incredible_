@@ -1,0 +1,122 @@
+#exercice 1 
+def display_message()
+   print ("we are learning functions")
+display_message()
+
+#exercice 2
+def favorite_book(title)
+ print(f"one of my favorite book is {title}")
+
+favorite_book("harry potter")
+
+#exercice 3 
+def describe_city(name , country="france") 
+ print(f"{name} is in {country}
+
+describe_city("paris") 
+describe_country("berlin , germany")
+
+#exercice 4 
+import random
+def compare_numbers(user_number):
+    random_number = random.randint(1, 100)
+    if user_number == random_number:
+        print("Success! You guessed the right number.")
+    else:
+        print(f"Fail! Your number: {user_number}, Random number: {random_number}")
+
+compare_numbers(42)
+
+#exercice 5 
+def make_shirt (size="L" , text="i love python" ) 
+ print(f"The size of the shirt is {size} and the text is {text}")
+
+make_shirt()
+make_shirt("M")
+make_shirt("S", "Hello World")
+make_shirt(size="XL", text="Custom Text")
+
+#exercice 6 
+magician_names = ['Harry Houdini', 'David Blaine', 'Criss Angel']
+def show_magicians(magicians): 
+ for magician in magicians
+  print(magician)
+
+def make_great(magicians):
+ for i in range(len(magicians)):
+ magicians[i] = magicians[i] + " the great"
+
+
+make_great(magician_names)
+show_magicians(magician_names)
+
+#exercice 7 
+import random
+def get_random_temp(season):
+    if season == "winter":
+        return random.uniform(-10, 16)
+    elif season == "spring":
+        return random.uniform(10, 25)
+    elif season == "summer":
+        return random.uniform(20, 40)
+    elif season == "autumn":
+        return random.uniform(5, 20)
+    else:
+        return random.uniform(-10, 40)
+
+def main():
+    season = input("Enter a season (winter, spring, summer, autumn): ").lower()
+    temp = get_random_temp(season)
+    print(f"The temperature right now is {temp:.2f} degrees Celsius.")
+
+    if temp < 0:
+        print("Brrr, that’s freezing! Wear some extra layers today.")
+    elif temp < 16:
+        print("Quite chilly! Don’t forget your coat.")
+    elif temp < 24:
+        print("Nice and cool, enjoy your day.")
+    elif temp < 32:
+        print("Warm and pleasant, perfect for an outing.")
+    else:
+        print("It's really hot! Stay hydrated.")
+
+main()
+
+#exercice 8
+data = [
+    {"question": "What is Baby Yoda's real name?", "answer": "Grogu"},
+    {"question": "Where did Obi-Wan take Luke after his birth?", "answer": "Tatooine"},
+    {"question": "What year did the first Star Wars movie come out?", "answer": "1977"},
+    {"question": "Who built C-3PO?", "answer": "Anakin Skywalker"},
+    {"question": "Anakin Skywalker grew up to be who?", "answer": "Darth Vader"},
+    {"question": "What species is Chewbacca?", "answer": "Wookiee"}
+]
+
+def star_wars_quiz():
+    correct = 0
+    wrong = 0
+    wrong_answers = []
+
+    for q in data:
+        user_answer = input(q["question"] + " ").strip()
+        if user_answer.lower() == q["answer"].lower():
+            correct += 1
+        else:
+            wrong += 1
+            wrong_answers.append((q["question"], user_answer, q["answer"]))
+
+    print(f"\nCorrect answers: {correct}, Incorrect answers: {wrong}")
+    
+    if wrong > 0:
+        print("\nHere are the ones you got wrong:")
+        for q, user_ans, correct_ans in wrong_answers:
+            print(f"- {q}\n  Your answer: {user_ans}\n  Correct answer: {correct_ans}\n")
+
+    if wrong > 3:
+        print("You got more than 3 wrong answers. Try again!")
+        star_wars_quiz()
+
+star_wars_quiz()
+
+
+ 
