@@ -1,0 +1,11 @@
+#challenge 1 
+words = input("Enter words separated by commas: ")
+sorted_words = ','.join(sorted([word.strip() for word in words.split(',')]))
+print(sorted_words)
+
+
+#challenge 2 
+def longest_word(sentence):
+words = sentence.split()
+longest = max(words, key=len)
+return longest
