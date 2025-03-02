@@ -1,0 +1,29 @@
+#exercice 1 
+
+def get_words_from_file(filename):
+    with open(filename, "r") as file:
+        words = file.readlines()
+    return [word.strip() for word in words]
+
+
+import random
+
+def get_random_sentence(length):
+    words = get_words_from_file("words.txt") 
+    sentence = " ".join(random.sample(words, length))  
+    return sentence.lower() 
+
+
+def main():
+    print("Bienvenue dans le générateur de phrases aléatoires !")
+    
+    user_input = input("Combien de mots doit contenir la phrase ? (entre 2 et 20) : ")
+
+    if user_input.isdigit(): 
+        length = int(user_input)
+        if 2 <= length <= 20:
+            print(get_random_sentence(length))
+        else:
+            print("Erreur : Le nombre doit être entre 2 et 20.")
+    else:
+        print("Erreur : Vous devez entrer un nombre valide.")
