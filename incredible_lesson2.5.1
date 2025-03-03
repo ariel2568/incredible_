@@ -1,0 +1,51 @@
+import itertools
+
+class AnagramChecker:
+    def __init__(self, word_list_file="words.txt"):
+        with open(word_list_file, "r") as file:
+            self.words = set(word.strip().lower() for word in file.readlines())
+
+    def is_valid_word(self, word):
+        return word.lower() in self.words
+
+    def is_anagram(self, word1, word2):
+        return sorted(word1.lower()) == sorted(word2.lower()) and word1.lower() != word2.lower()
+
+    def get_anagrams(self, word):
+        return [w for w in self.words if self.is_anagram(word, w)]
+
+
+def get_valid_word():
+    while True:
+        word = input("Entrez un mot (ou tapez 'exit' pour quitter) : ").strip()
+        if word.lower() == "exit":
+            return None
+        if " " in word or not word.isalpha():
+            print("Erreur : put one word , no numbers no special characters")
+        else:
+            return word
+
+
+def main():
+    checker = AnagramChecker()
+    print("hello , play")
+    
+    while True:
+        word = get_valid_word()
+        if word is None:
+            print("cya , bye")
+            break
+
+        if not checker.is_valid_word(word):
+            print(f"the word '{word}' is not english")
+            pass
+
+        anagrams = checker.get_anagrams(word)
+        print(f"\nword : {word.upper()}")
+        print("this is english ")
+        print("Anagrammes :", ", ".join(anagrams) if anagrams else "nothing")
+        print("-" * 40)
+
+
+if __name__ == "__main__":
+    main()
