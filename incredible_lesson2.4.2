@@ -25,7 +25,6 @@ class Text:
 
 @classmethod
     def from_file(cls, filename):
-        """Crée une instance de Text à partir d'un fichier."""
         with open(filename, "r", encoding="utf-8") as file:
-            content = file.read()  # Lit tout le fichier
+            content = file.read()  
         return cls(content) 
