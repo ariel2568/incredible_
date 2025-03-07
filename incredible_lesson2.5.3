@@ -1,0 +1,52 @@
+#part 1 - Quizz
+
+#what is a class ? 
+#it is a bluerpint that will create an object from an instance 
+
+#what is an instance ? 
+# it s the creation of new object using the class 
+
+#what is encapsulation ? 
+#just making objects in private using __
+
+#what is abstraction ? 
+#it s just hide the non-essential fonctions 
+
+#what is inheritence 
+#just a new class that will inhert=ite from the older class such as his methods and attributs 
+
+#what is multiple inheritence ? 
+#a new class will inherite from many classes 
+
+#what is polymorphism ? 
+#you can use a "method name" in many classes but it will go for the right one 
+
+#What is method resolution order or MRO?
+#it s just the "order" for the inheritence 
+
+
+#part 2 
+import random
+
+class Card:
+    def __init__(self, suit, value):
+        self.suit = suit
+        self.value = value
+
+    def __str__(self):
+        return f"{self.value} of {self.suit}"
+
+
+class Deck:
+    suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
+    values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+
+    def __init__(self):
+        self.cards = [Card(suit, value) for suit in self.suits for value in self.values]
+        self.shuffle()
+
+    def shuffle(self):
+        random.shuffle(self.cards)
+
+    def deal(self):
+        return self.cards.pop() if self.cards else None
