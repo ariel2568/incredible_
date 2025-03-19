@@ -1,0 +1,237 @@
+#exrcice 1
+
+
+
+-take , organize , then read the informations to take decision
+-it gives predictions and ways for resolving a problem
+-health:predict disease
+ finance: predict the stock market 
+ marketing : predict customers for publicity 
+
+
+#exercice 2
+
+
+
+import zipfile
+import os
+import pandas as pd
+
+csv_files = [
+    '/content/How Much Sleep Do Americans (1).zip',
+    '/content/Global Trends in Mental Health Disorder (1).zip',
+    '/content/Credit Card Approvals (Clean Data).zip'
+]
+
+for zip_file in csv_files:
+    print(f"Extracting {zip_file}")
+    
+    with zipfile.ZipFile(zip_file, 'r') as zip_ref:
+        zip_ref.extractall("/content/")
+        print(f"Extracted files: {zip_ref.namelist()}")
+    
+    extracted_files = zip_ref.namelist()
+    csv_file = None
+    
+    for file in extracted_files:
+        if file.endswith('.csv'):
+            csv_file = file
+            break
+    
+    if csv_file:
+        df = pd.read_csv(f"/content/{csv_file}")
+        print(f"\nLoaded file: {csv_file}")
+        print(df.head())
+        print(df.describe())
+    else:
+        print(f"No CSV file found in {zip_file}")
+
+#-------------------------------------
+       #    RESULT
+#-------------------------------------
+ 75%          3.912381                   1.867834  
+max          6.602754                   5.474668  
+Extracting /content/Credit Card Approvals (Clean Data).zip
+Extracted files: ['Credit Card Approvals (Clean Data)/clean_dataset.csv', 'Credit Card Approvals (Clean Data)/crx.csv', 'How Much Sleep Do Americans.zip']
+
+Loaded file: Credit Card Approvals (Clean Data)/clean_dataset.csv
+   Gender    Age   Debt  Married  BankCustomer     Industry Ethnicity  \
+0       1  30.83  0.000        1             1  Industrials     White   
+1       0  58.67  4.460        1             1    Materials     Black   
+2       0  24.50  0.500        1             1    Materials     Black   
+3       1  27.83  1.540        1             1  Industrials     White   
+4       1  20.17  5.625        1             1  Industrials     White   
+
+   YearsEmployed  PriorDefault  Employed  CreditScore  DriversLicense  \
+0           1.25             1         1            1               0   
+1           3.04             1         1            6               0   
+2           1.50             1         0            0               0   
+3           3.75             1         1            5               1   
+4           1.71             1         0            0               0   
+
+        Citizen  ZipCode  Income  Approved  
+0       ByBirth      202       0         1  
+1       ByBirth       43     560         1  
+2       ByBirth      280     824         1  
+3       ByBirth      100       3         1  
+4  ByOtherMeans      120       0         1  
+           Gender         Age        Debt     Married  BankCustomer  \
+count  690.000000  690.000000  690.000000  690.000000    690.000000   
+mean     0.695652   31.514116    4.758725    0.760870      0.763768   
+std      0.460464   11.860245    4.978163    0.426862      0.425074   
+min      0.000000   13.750000    0.000000    0.000000      0.000000   
+25%      0.000000   22.670000    1.000000    1.000000      1.000000   
+50%      1.000000   28.460000    2.750000    1.000000      1.000000   
+75%      1.000000   37.707500    7.207500    1.000000      1.000000   
+max      1.000000   80.250000   28.000000    1.000000      1.000000   
+
+       YearsEmployed  PriorDefault    Employed  CreditScore  DriversLicense  \
+count     690.000000    690.000000  690.000000    690.00000      690.000000   
+mean        2.223406      0.523188    0.427536      2.40000        0.457971   
+std         3.346513      0.499824    0.495080      4.86294        0.498592   
+min         0.000000      0.000000    0.000000      0.00000        0.000000   
+25%         0.165000      0.000000    0.000000      0.00000        0.000000   
+50%         1.000000      1.000000    0.000000      0.00000        0.000000   
+75%         2.625000      1.000000    1.000000      3.00000        1.000000   
+max        28.500000      1.000000    1.000000     67.00000        1.000000   
+
+           ZipCode         Income    Approved  
+count   690.000000     690.000000  690.000000  
+mean    180.547826    1017.385507    0.444928  
+std     173.970323    5210.102598    0.497318  
+min       0.000000       0.000000    0.000000  
+25%      60.000000       0.000000    0.000000  
+50%     160.000000       5.000000    0.000000  
+75%     272.000000     395.500000    1.000000  
+max    2000.000000  100000.000000    1.000000  
+<ipython-input-46-8c99ed3c0603>:27: DtypeWarning: Columns (5,6) have mixed types. Specify dtype option on import or set low_memory=False.
+  df = pd.read_csv(f"/content/{csv_file}")
+
+
+
+#exercice 3
+
+
+for column in df.columns:
+    if df[column].dtype in ['int64', 'float64']:
+        print(f"{column} : Quantitative")
+    else:
+        print(f"{column} : Qualitative")
+
+
+#----------------------------------
+          # result
+#---------------------------------
+
+
+Gender : Quantitative
+Age : Quantitative
+Debt : Quantitative
+Married : Quantitative
+BankCustomer : Quantitative
+Industry : Qualitative
+Ethnicity : Qualitative
+YearsEmployed : Quantitative
+PriorDefault : Quantitative
+Employed : Quantitative
+CreditScore : Quantitative
+DriversLicense : Quantitative
+Citizen : Qualitative
+ZipCode : Quantitative
+Income : Quantitative
+Approved : Quantitative
+
+
+
+#exercice 4
+
+
+
+import zipfile
+import pandas as pd
+
+zip_file = '/content/Iris Dataset.zip'
+
+with zipfile.ZipFile(zip_file, 'r') as zip_ref:
+    zip_ref.extractall("/content/")
+    print(f"Extracted files: {zip_ref.namelist()}")
+
+csv_file = None
+for file in zip_ref.namelist():
+    if file.endswith('.csv'):
+        csv_file = file
+        break
+
+if csv_file:
+    df = pd.read_csv(f"/content/{csv_file}")
+    print(f"\nLoaded file: {csv_file}")
+    print(df.head())
+    
+    qualitative_columns = []
+    quantitative_columns = []
+    
+    for column in df.columns:
+        if df[column].dtype == 'object':  
+            qualitative_columns.append(column)
+        else:  
+            quantitative_columns.append(column)
+    
+    print("\nQualitative Columns:")
+    print(qualitative_columns)
+    print("\nQuantitative Columns:")
+    print(quantitative_columns)
+else:
+    print("No CSV file found in the ZIP file.")
+
+
+#-----------------
+     #result
+#-----------------
+    Extracted files: ['Iris Dataset/Iris.csv']
+
+Loaded file: Iris Dataset/Iris.csv
+   Id  SepalLengthCm  SepalWidthCm  PetalLengthCm  PetalWidthCm      Species
+0   1            5.1           3.5            1.4           0.2  Iris-setosa
+1   2            4.9           3.0            1.4           0.2  Iris-setosa
+2   3            4.7           3.2            1.3           0.2  Iris-setosa
+3   4            4.6           3.1            1.5           0.2  Iris-setosa
+4   5            5.0           3.6            1.4           0.2  Iris-setosa
+
+Qualitative Columns:
+['Species']
+
+Quantitative Columns:
+['Id', 'SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']
+
+
+
+#basically "quantitative" is just used from numbers as int and float  , then we got the "qualitative"
+# thats get with objets , (ccharacters)
+
+
+
+
+#exercice 5
+
+import matplotlib.pyplot as plt
+
+plt.plot(df['SepalLengthCm'], df['SepalWidthCm'], marker='o', linestyle='-', color='b')  # Utilisation de marqueurs pour les points
+plt.title('Relation entre la longueur et la largeur des sépales')  
+plt.xlabel('Longueur des sépales (cm)')  
+plt.ylabel('Largeur des sépales (cm)')  
+plt.grid(True)  
+plt.show()  
+
+
+
+
+#exercice 6
+
+
+#we can basically do analysis on the year of sleep , we can compare the age group , also the sex and age group 
+#well , i think we understood that point
+
+
+
+
+#
