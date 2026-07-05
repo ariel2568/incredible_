@@ -11,7 +11,7 @@ favorite_book("harry potter")
 
 #exercice 3 
 def describe_city(name , country="france") 
- print(f"{name} is in {country}
+ print(f"{name} is in {country"}
 
 describe_city("paris") 
 describe_country("berlin , germany")
