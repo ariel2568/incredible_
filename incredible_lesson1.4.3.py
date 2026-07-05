@@ -1,4 +1,4 @@
-#daily challenge
+#daily challenge 
 
 menu = {
     "espresso": 7.0,
