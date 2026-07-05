@@ -1,7 +1,5 @@
 #daily challenge
-# Coffee Shop Menu Manager
 
-# Initial data
 menu = {
     "espresso": 7.0,
     "latte": 12.0,
